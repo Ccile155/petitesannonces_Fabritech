@@ -1,0 +1,4 @@
+# Mention pour utiliser ce script chez free.fr
+#<IfDefine Free>
+#php56 1
+#</IfDefine>

@@ -1,0 +1,118 @@
+/*accueil*/
+table
+{
+    border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
+    width: 95%;
+    margin:auto;
+}
+td, th
+{
+    border: 1px solid black;
+}
+
+/* liste */
+#bloc_page
+{
+    width: 80%;
+    margin: auto;
+
+}
+#bloc_recherche
+{
+	background-color: #F78181;
+	line-height: 40px;
+	padding-left: 35px;
+	margin: 20px;
+
+}
+#logo
+{
+	float:right;
+}
+#titre_principal
+{
+	line-height: 80px;
+}
+nav ul
+{
+   list-style-type: none;
+   display: flex;
+	
+    
+}
+
+nav
+{
+	background-color: #8b9dc3;
+	line-height: 30px;
+}
+
+
+nav li
+{
+    margin-right: 15px;
+
+        
+}
+
+footer
+{
+	background-color: #8b9dc3;
+	padding-left: 15px;
+	text-align: center;
+}
+
+article
+{
+		 background-color: #dfe3ee;
+		 border-radius: 10px;
+		 padding-left: 30px;
+		 padding-right: 30px;
+		/* padding-top: 25px;
+		 padding-bottom: 25px;*/
+		 margin: 20px;
+}
+
+body
+{
+	 background-color: #f7f7f7;
+}
+
+a
+{
+	    color: #3b5998;
+}
+
+h3
+{
+	text-transform: uppercase;
+}
+
+/* ajout */
+textarea {
+  width: 300px;
+  height: 150px;
+}
+/*blockquote{
+	background-color: #f7f7f7;
+	border-radius: 10px;
+}*/
+
+#form_ajout
+{
+	/*padding-left: 30px;*/
+	margin: 20px;
+}
+
+
+/* image details */
+
+/* image liste */
+.photo_mini{
+	float:right;
+	margin-top: -15px;
+}
+.vue_macro{
+	height: 180px;
+	/*vertical-align : middle;*/
+}
