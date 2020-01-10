@@ -10,7 +10,7 @@ function getBDD()
 		if ($_SERVER['SERVER_NAME']=="localhost")
 		{	
 			// on est en local
-			$bdd= new PDO('mysql:host=localhost; dbname=bdd_test','antoine','secret', array(PDO::MYSQL_ATTR_INIT_COMMAND => " SET NAMES utf8 "));
+			$bdd= new PDO('mysql:host=localhost; dbname=bdd_test','antoine','secret', array(PDO::MYSQL_ATTR_INIT_COMMAND => " SET NAMES utf8 ", PDO::MYSQL_ATTR_LOCAL_INFILE => true));
 		}
 		else
 		{	
