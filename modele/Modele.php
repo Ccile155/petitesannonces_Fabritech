@@ -6,17 +6,8 @@ function getBDD()
 {
 	try
 	{
-		//global $bdd;
-		if ($_SERVER['SERVER_NAME']=="localhost")
-		{	
-			// on est en local
-			$bdd= new PDO('mysql:host=localhost; dbname=bdd_test','antoine','secret', array(PDO::MYSQL_ATTR_INIT_COMMAND => " SET NAMES utf8 ", PDO::MYSQL_ATTR_LOCAL_INFILE => true));
-		}
-		else
-		{	
-			// on est sur free par exemple
-			$bdd= new PDO('mysql:host=sql.free.fr; dbname=dbname','user','password', array(PDO::MYSQL_ATTR_INIT_COMMAND => " SET NAMES utf8 "));
-		}
+		require_once "./conf/config.php";
+		$bdd= new PDO('mysql:host='.DB_HOST.'; dbname='.DB_NAME,DB_USER,DB_PASSWORD, array(PDO::MYSQL_ATTR_INIT_COMMAND => " SET NAMES utf8 ", PDO::MYSQL_ATTR_LOCAL_INFILE => true));
 
 		return $bdd;
 	}
