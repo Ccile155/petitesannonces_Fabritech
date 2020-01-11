@@ -27,6 +27,35 @@ function getBDD()
 	//echo "Connection réussi<br />";
 }
 
+// install 
+function getNb_regions() 
+{
+	$bdd=getBDD();
+	$nb_regions = 0; 
+	$query="SELECT COUNT(*) AS nb_regions FROM regions ";
+	$req=$bdd->prepare($query);
+	$req->execute();
+	$donnees=$req->fetch();
+	$req->closeCursor();
+	$nb_regions=$donnees['nb_regions'];
+	
+	return $nb_regions;
+}
+
+function getNb_categories() 
+{
+	$bdd=getBDD();
+	$nb_categories = 0; 
+	$query="SELECT COUNT(*) AS nb_categories FROM categories ";
+	$req=$bdd->prepare($query);
+	$req->execute();
+	$donnees=$req->fetch();
+	$req->closeCursor();
+	$nb_categories=$donnees['nb_categories'];
+	
+	return $nb_categories;
+}
+
 // modele ajout 
 function getListe_infos_cat() 
 {

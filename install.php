@@ -1,9 +1,8 @@
-<?php ob_start(); ?> 
 <?php require "modele/Modele.php"; ?>
+
+<?php ob_start(); ?> 
 <?php $titre_page="Script d'installation"; ?>
 <?php
-
-
 
 $bdd=getBDD();
 $install_is_ok = true;
@@ -73,8 +72,11 @@ try{
 	  PRIMARY KEY  (`id`)
 	) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
 	");
+	
+	print("<p>Base de données créée avec succès.</p>");
+	
 }catch (Exception $e) {
-	print("Erreur lors de la création de la base de données");
+	print("<p>Erreur lors de la création de la base de données</p>");
 	$install_is_ok = false;
 }
 	
@@ -91,13 +93,7 @@ LINES TERMINATED BY '\n'
 (id, nom); 
 ");
 
-$nb_regions = 0; 
-$query="SELECT COUNT(*) AS nb_regions FROM regions ";
-$req=$bdd->prepare($query);
-$req->execute();
-$donnees=$req->fetch();
-$req->closeCursor();
-$nb_regions=$donnees['nb_regions'];
+$nb_regions = getNb_regions();
 
 if ($nb_regions == 0) {
 	print("<p>Erreur lors de l'ajout de régions</p>");
@@ -117,13 +113,7 @@ LINES TERMINATED BY '\n'
 (id, nom); 
 ");
 
-$nb_categories = 0; 
-$query="SELECT COUNT(*) AS nb_categories FROM categories ";
-$req=$bdd->prepare($query);
-$req->execute();
-$donnees=$req->fetch();
-$req->closeCursor();
-$nb_categories=$donnees['nb_categories'];
+$nb_categories = getNb_categories();
 
 if ($nb_categories == 0) {
 	print("<p>Erreur lors de l'ajout de catégories</p>");
