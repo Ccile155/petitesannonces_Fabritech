@@ -12,7 +12,7 @@
 
 [Description du résultat attendu]
 
-#### Commportement actuel:
+#### Comportement actuel:
 
 [Decription du comportement actuel]
 
