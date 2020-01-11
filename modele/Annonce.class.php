@@ -127,10 +127,10 @@ class Annonce
     }
  	 //contenu   
     public function getContenu() {
-        return nl2br($this->contenu);
+        return nl2br(htmlspecialchars($this->contenu, ENT_QUOTES, "UTF-8"));
         }
     public function setContenu($contenu) {
-        $this->contenu = htmlspecialchars($contenu, ENT_QUOTES, "UTF-8");
+        $this->contenu = $contenu;
     }
  	 //prix   
     public function getPrix() {
