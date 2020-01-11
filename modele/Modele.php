@@ -6,17 +6,8 @@ function getBDD()
 {
 	try
 	{
-		//global $bdd;
-		if ($_SERVER['SERVER_NAME']=="localhost")
-		{	
-			// on est en local
-			$bdd= new PDO('mysql:host=localhost; dbname=bdd_test','antoine','secret', array(PDO::MYSQL_ATTR_INIT_COMMAND => " SET NAMES utf8 "));
-		}
-		else
-		{	
-			// on est sur free par exemple
-			$bdd= new PDO('mysql:host=sql.free.fr; dbname=dbname','user','password', array(PDO::MYSQL_ATTR_INIT_COMMAND => " SET NAMES utf8 "));
-		}
+		require_once "./conf/config.php";
+		$bdd= new PDO('mysql:host='.DB_HOST.'; dbname='.DB_NAME,DB_USER,DB_PASSWORD, array(PDO::MYSQL_ATTR_INIT_COMMAND => " SET NAMES utf8 ", PDO::MYSQL_ATTR_LOCAL_INFILE => true));
 
 		return $bdd;
 	}
@@ -25,6 +16,35 @@ function getBDD()
 		die('Erreur : '.$e->getMessage());
 	}
 	//echo "Connection réussi<br />";
+}
+
+// install 
+function getNb_regions() 
+{
+	$bdd=getBDD();
+	$nb_regions = 0; 
+	$query="SELECT COUNT(*) AS nb_regions FROM regions ";
+	$req=$bdd->prepare($query);
+	$req->execute();
+	$donnees=$req->fetch();
+	$req->closeCursor();
+	$nb_regions=$donnees['nb_regions'];
+	
+	return $nb_regions;
+}
+
+function getNb_categories() 
+{
+	$bdd=getBDD();
+	$nb_categories = 0; 
+	$query="SELECT COUNT(*) AS nb_categories FROM categories ";
+	$req=$bdd->prepare($query);
+	$req->execute();
+	$donnees=$req->fetch();
+	$req->closeCursor();
+	$nb_categories=$donnees['nb_categories'];
+	
+	return $nb_categories;
 }
 
 // modele ajout 

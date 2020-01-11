@@ -9,6 +9,10 @@
  -->
 </p>
 
+<p>Pour plus de renseignements ou pour signaler un bug, rendez-vous sur le site internet de 
+<a href="https://framagit.org/toitoinebzh/petitesannonces/">PetitesAnnonces.</a>
+</p>
+
 </article>
 
 

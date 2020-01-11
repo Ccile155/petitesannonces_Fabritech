@@ -42,7 +42,7 @@
 		<?php
 	
 		}
-		echo "</article>";
+	echo "</article>";
 ?>
 
              
