@@ -8,8 +8,8 @@ if (isset($_POST["nom_personne"]) AND isset($_POST["email"]) AND isset($_POST["i
 	
 	$destinataire = $ann->getEmail();
 	// Pour les champs $expediteur / $copie / $destinataire, séparer par une virgule s'il y a plusieurs adresses
-	$expediteur = $_POST['email'];
-	$nom_expediteur=$_POST["nom_personne"];
+	$expediteur = htmlspecialchars($_POST['email']);
+	$nom_expediteur=htmlspecialchars($_POST["nom_personne"]);
 	$objet = "[Annonce] ".$ann->getTitre();
 
 	$headers  = 'MIME-Version: 1.0' . "\n"; // Version MIME
@@ -29,7 +29,7 @@ if (isset($_POST["nom_personne"]) AND isset($_POST["email"]) AND isset($_POST["i
 	$message.="Message de ".$nom_expediteur." ".$expediteur."\n";
 	if (isset($_POST["tel"]))
 	{
-	$message.="Téléphone : ".$_POST["tel"]."\n";
+	$message.="Téléphone : ".htmlspecialchars($_POST["tel"])."\n";
 	}
 	$message.="\n";
 	$message.=$_POST['message']."\n";
