@@ -4,7 +4,7 @@
 <article>
 
 <p>Ce site à été réalisé à l'aide de <a href="http://bluefish.openoffice.nl/">Bluefish</a>.
-<!-- et <a href="http://fluxbb.fr/">Fluxbb</a>.</p>
+<!-- et <a href="https://fluxbb.fr/">Fluxbb</a>.</p>
 <p>Pour toutes demandes d'informations, veuillez utiliser le <a href="../forums/index.php">Forum</a>. 
  -->
 </p>
