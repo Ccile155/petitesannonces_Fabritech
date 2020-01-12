@@ -65,13 +65,13 @@ class Annonce
 		{
 			$req=$bdd->prepare("INSERT INTO annonces(titre, prix, contenu, date_creation, id_cat, id_reg, tel, email, motdepasse) VALUES (:titre,:prix,:contenu,NOW(),:id_cat,:id_reg,:tel,:email, :motdepasse)");
 			$req->execute(array(
-				"titre"=>$this->getTitre(),
-				"prix"=>$this->getPrix(),
-				"contenu"=>$this->getContenu(),
-				"id_cat"=>$this->getId_cat(),
-				"id_reg"=>$this->getId_reg(),
-				"tel"=>$this->getTel(),
-				"email"=>$this->getEmail(),
+				"titre"=>$this->titre,
+				"prix"=>$this->prix,
+				"contenu"=>$this->contenu,
+				"id_cat"=>$this->id_cat,
+				"id_reg"=>$this->id_reg,
+				"tel"=>$this->tel,
+				"email"=>$this->email,
 				"motdepasse"=>$this->getMotdepasse()
 				));			
 			$count = $req->rowCount();
