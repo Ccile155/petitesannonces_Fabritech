@@ -92,12 +92,12 @@ class Annonce
 		}
 		
 		}
-    // suppression de la bdd
-    public function suppr_bdd($email,$motdepasse) {
-    	//global $bdd;
-    	$bdd=getBDD();
+	 //check user
+	 public function check_user($email,$motdepasse) {
+	 	$bdd=getBDD();
+	 	
     	$mdp=hash('sha256', $motdepasse);
-    	$req=$bdd->prepare('DELETE FROM annonces WHERE (id=:id AND email=:email AND motdepasse=:motdepasse)');
+    	$req=$bdd->prepare('SELECT id FROM annonces WHERE (id=:id AND email=:email AND motdepasse=:motdepasse)');
 		$req->execute(array(
 		"id"=>$this->id,
 		"email"=>$email,
@@ -105,7 +105,53 @@ class Annonce
 		));
 		$count = $req->rowCount();
 		$req->closeCursor();
-		return $count==1; // à revoir
+		
+		if ($count ==1) {
+			return true;
+		}
+		else {
+			return false;		
+		}
+		
+	 	}	
+    // suppression de la bdd
+    public function suppr_bdd($email,$motdepasse) {
+    	//global $bdd;
+    	$bdd=getBDD();
+    	
+	 	if ($this->check_user($email,$motdepasse)) {
+	    	// suppression dossier uploads
+	      $uploads_dir = $this->getUploadsDir();
+	    	// d'abord les images
+	    	$liste_nom_img = $this->getImage();
+	    	foreach ($liste_nom_img as $im_name) {
+				unlink($uploads_dir.$im_name["nom_img"]);	    	
+	    	}
+	    	//puis le dossier
+  			if ( is_dir($uploads_dir)) {
+  				rmdir($uploads_dir); // uniquement dossier vide
+  				//print("suppression dossier");
+  			}
+			// nettoyage table annonces_img
+	    	$req=$bdd->prepare('DELETE FROM annonces_img WHERE (id_ann=:id)');
+			$req->execute(array(
+			"id"=>$this->id
+			));
+			$req->closeCursor();	    	
+	    	// nettoyage table annonces
+	    	$req=$bdd->prepare('DELETE FROM annonces WHERE (id=:id)');
+			$req->execute(array(
+			"id"=>$this->id
+			));
+			$count = $req->rowCount();
+			$req->closeCursor();
+			
+			return $count==1; // à revoir
+		} 
+		else {
+			return false;
+		}
+		
     	}
     //affichage
     public function affiche() {
