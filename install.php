@@ -128,7 +128,7 @@ else {
 
 print("<h3>3-Création du dossier de téléversement</h3>");
 if (!is_dir("./uploads")) {
-	if (!mkdir("./uploads", 0777)) {
+	if (!mkdir("./uploads", 0755)) {
 		$install_is_ok = false;
     	die('<p>Echec lors de la création des répertoires</p>');
 	}
