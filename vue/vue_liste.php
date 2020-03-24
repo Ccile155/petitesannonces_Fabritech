@@ -47,8 +47,8 @@
 			//echo $id_ann["id"];
 			$ann=new Annonce($id_ann["id"]);
 			
-			echo '<a href="details.php?id='.$ann->getId().'"><h3>'.$ann->getTitre().'</h3></a>';
-			//echo '<h3>'.$ann->getTitre().'</h3>';
+			echo '<a href="details.php?id='.$ann->renderId().'"><h3>'.$ann->renderTitre().'</h3></a>';
+			//echo '<h3>'.$ann->renderTitre().'</h3>';
 			
 			if ($ann->getNbImages()>0){
 				// partie image
@@ -57,19 +57,19 @@
 							$nom_img=$liste_nom_img[0];
 
 									$chemin =$ann->getUploadsDir().$nom_img["nom_img"];
-									echo '<a href="details.php?id='.$ann->getId().'">';
+									echo '<a href="details.php?id='.$ann->renderId().'">';
 										echo '<img class="photo_mini" ';
 										echo fctaffichimage($chemin, 0, 130);
-										echo ' alt="'.$ann->getTitre().'"';
+										echo ' alt="'.$ann->renderTitre().'"';
 										echo '  />';
 									echo '</a>';
 		   }
 			
 			
-			echo "<p><em>Catégorie : ".$ann->getNom_cat() ."</em><br />";
-			echo "<em>Région : ".$ann->getNom_reg() ."</em><br />";
-			echo "<em>Ajoutée le ".$ann->getDate_creation()."</em></p>";
-			echo "<strong>Prix : ".$ann->getPrix()." €</strong>";
+			echo "<p><em>Catégorie : ".$ann->renderNom_cat() ."</em><br />";
+			echo "<em>Région : ".$ann->renderNom_reg() ."</em><br />";
+			echo "<em>Ajoutée le ".$ann->renderDate_creation()."</em></p>";
+			echo "<strong>Prix : ".$ann->renderPrix()." €</strong>";
 			
 	   echo "</article>";
 
