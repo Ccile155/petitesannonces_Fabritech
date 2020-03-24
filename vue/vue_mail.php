@@ -6,11 +6,11 @@ if (isset($_POST["nom_personne"]) AND isset($_POST["email"]) AND isset($_POST["i
 {
 	$ann=new Annonce($_POST["id"]);
 	
-	$destinataire = $ann->getEmail();
+	$destinataire = $ann->renderEmail();
 	// Pour les champs $expediteur / $copie / $destinataire, séparer par une virgule s'il y a plusieurs adresses
 	$expediteur = htmlspecialchars($_POST['email']);
 	$nom_expediteur=htmlspecialchars($_POST["nom_personne"]);
-	$objet = "[Annonce] ".$ann->getTitre();
+	$objet = "[Annonce] ".$ann->renderTitre();
 
 	$headers  = 'MIME-Version: 1.0' . "\n"; // Version MIME
 	//$headers .= 'Content-type: text/html; charset=utf-8\n'; // l'en-tete Content-type pour le format HTML

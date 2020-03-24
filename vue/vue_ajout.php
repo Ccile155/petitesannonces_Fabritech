@@ -26,7 +26,7 @@
 					$reussite=$ann->ajout_bdd();
 					
 					// partie inclusion fichiers
-					//echo $ann->getId();
+					//echo $ann->renderId();
 					//echo var_dump($reussite);
 					
 				   if ( (isset($_FILES['pictures']['error']) || !is_array($_FILES['pictures']['error']) ) AND $reussite ) {
