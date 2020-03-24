@@ -5,7 +5,7 @@
 
 echo "<article >";
 //echo "<div id='form_ajout'>";
-   echo "<h3>".$ann->getTitre()."</h3>";
+   echo "<h3>".$ann->renderTitre()."</h3>";
 	//echo $ann->getNbImages(); 
 	
 	if ($ann->getNbImages()>0){
@@ -21,13 +21,13 @@ echo "<article >";
 						//echo "<li>";
 							//echo $ann->getUploadsDir().$nom_img["nom_img"];
 							$chemin =$ann->getUploadsDir().$nom_img["nom_img"];
-							//echo '<img src="'.$chemin.'" alt="'.$ann->getTitre().'" />';
-							//echo '<img src="'.fctaffichimage($chemin, 120, 100).'" alt="'.$ann->getTitre().'"/>';
-							//echo '<a href="'.$chemin.'" title="'.$ann->getTitre().'">';
+							//echo '<img src="'.$chemin.'" alt="'.$ann->renderTitre().'" />';
+							//echo '<img src="'.fctaffichimage($chemin, 120, 100).'" alt="'.$ann->renderTitre().'"/>';
+							//echo '<a href="'.$chemin.'" title="'.$ann->renderTitre().'">';
 							
 							echo '<img class="mySlides" ';
 							echo fctaffichimage($chemin, 0, 400);
-							echo ' alt="'.$ann->getTitre().'"';
+							echo ' alt="'.$ann->renderTitre().'"';
 							echo '  />';
 						//echo "</li>";
 						
@@ -45,17 +45,17 @@ echo "<article >";
 
  
 
-	echo "<p>Catégorie : ".$ann->getNom_cat() ."<br />";
-   echo "Ajoutée le ".$ann->getDate_creation()."<br />";
-   echo "Région : ".$ann->getNom_reg() ."</p>";
+	echo "<p>Catégorie : ".$ann->renderNom_cat() ."<br />";
+   echo "Ajoutée le ".$ann->renderDate_creation()."<br />";
+   echo "Région : ".$ann->renderNom_reg() ."</p>";
    
-   echo "<blockquote>".$ann->getContenu()."</blockquote>";
+   echo "<blockquote>".$ann->renderContenu()."</blockquote>";
    
-	//echo "<p> Téléphone : ".$ann->getTel()."</p>";
-	//echo "<p> Mail : ".$ann->getEmail()."</p>";
-	echo "<strong>Prix : ".$ann->getPrix()." €</strong>";
+	//echo "<p> Téléphone : ".$ann->renderTel()."</p>";
+	//echo "<p> Mail : ".$ann->renderEmail()."</p>";
+	echo "<strong>Prix : ".$ann->renderPrix()." €</strong>";
 	
-	echo '<p><a href="supprimer.php?id='.$ann->getId().'">Supprimer l\'annonce</a></p>';
+	echo '<p><a href="supprimer.php?id='.$ann->renderId().'">Supprimer l\'annonce</a></p>';
 
 
 //echo "</div>";
@@ -69,7 +69,7 @@ echo "</article>";
 <article >
 	 <h4>Contacter le propriétaire</h4>
 	 <h5>Par téléphone :</h5>
-	 <p> Téléphone : <?php echo $ann->getTel() ?> </p>
+	 <p> Téléphone : <?php echo $ann->renderTel() ?> </p>
 	 
 	 <h5>Par mail :</h5>
     <form id="envoi_mail" method="post" action="contact_prop.php">
@@ -85,7 +85,7 @@ echo "</article>";
 
 
     		<!--<p> <label for="objet">Objet :</label> 
-    		<input type="hidden" id="objet" name="objet" value="[Annonce] <?php echo $ann->getTitre() ?>" /></p>-->
+    		<input type="hidden" id="objet" name="objet" value="[Annonce] <?php echo $ann->renderTitre() ?>" /></p>-->
     		<input type='hidden' name='id' value=<?php echo $id ?> >
     		
     		<p><label for="message">Message* :</label><br />
